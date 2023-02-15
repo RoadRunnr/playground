@@ -1,0 +1,17 @@
+name: container
+
+on: [push, workflow_dispatch]
+
+jobs:
+  container:
+    runs-on: ubuntu-22.04
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Install Packages
+        run: |
+          sudo apt update
+          sudo apt full-upgrade -f
+          sudo apt install qemu-user-static buildah podman
